@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="images\circle-plus-icon.png" />
+    <None Remove="images\delete-icon-1.png" />
+    <None Remove="images\delete-icon.png" />
+    <None Remove="images\dots-circle-icon.png" />
+    <None Remove="images\edit-icon.png" />
+    <None Remove="images\info-icon.png" />
+    <None Remove="images\left-turn.png" />
+    <None Remove="images\pdf-icon.png" />
+    <None Remove="images\search-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BillMonitoring.Client\BillMonitoring.Client\BillMonitoring.Client.csproj" />
+    <ProjectReference Include="..\..\BillMonitoring.DTO\BillMonitoring.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\circle-plus-icon.png" />
+    <Resource Include="images\delete-icon-1.png" />
+    <Resource Include="images\delete-icon.png" />
+    <Resource Include="images\dots-circle-icon.png" />
+    <Resource Include="images\edit-icon.png" />
+    <Resource Include="images\info-icon.png" />
+    <Resource Include="images\left-turn.png" />
+    <Resource Include="images\pdf-icon.png" />
+    <Resource Include="images\search-icon.png" />
+  </ItemGroup>
+
+</Project>

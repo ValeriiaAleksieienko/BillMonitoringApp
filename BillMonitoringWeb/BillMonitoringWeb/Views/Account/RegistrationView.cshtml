@@ -1,0 +1,26 @@
+﻿@model RegisterModel
+@{
+    ViewData["Title"] = "RegistrationView";
+}
+<h1>RegistrationView</h1>
+
+<div>
+    <form asp-action="Register" asp-controller="Account" asp-antiforgery="true">
+        <div>
+            <div>
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" />
+                <br />
+                <label asp-for="Email"></label>
+                <input asp-for="Email" />
+                <br />
+                <label asp-for="Password"></label>
+                <input type="password" asp-for="Password" />
+            </div>
+            <div>
+                <input type="submit" value="Register" />
+            </div>
+        </div>
+    </form>
+    @Html.Raw(TempData["msg"])
+</div>

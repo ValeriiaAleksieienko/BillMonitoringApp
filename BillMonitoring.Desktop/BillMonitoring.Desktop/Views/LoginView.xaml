@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="BillMonitoring.Desktop.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BillMonitoring.Desktop.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="300 30">
+        <DockPanel LastChildFill="False">
+            <Label Content="User Name: " HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="10"/>
+            <TextBox Text="{Binding UserName}" DockPanel.Dock="Top"/>
+            <Label Content="Password: " HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="10"/>
+            <PasswordBox x:Name="txtPassword" PasswordChar="*" DockPanel.Dock="Top"/>
+            <Button Command="{Binding LogInCommand}" CommandParameter="{Binding ElementName=txtPassword}" Content="Log in" DockPanel.Dock="Top" Margin="15" Width="60"/>
+
+            <Label Content="Don`t have account? " HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0 30 0 0"/>
+            <Button Command="{Binding ToRegistrationViewCommand}" Content="Registration" DockPanel.Dock="Top" Margin="10" Width="70"/>
+
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillMonitoring.Desktop", "BillMonitoring.Desktop\BillMonitoring.Desktop.csproj", "{EA5C60AE-C8C0-4735-AED2-9B651EDADE23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BillMonitoring.Client", "BillMonitoring.Client", "{AD34293E-CFF9-4262-BDCE-7C8B1B281D39}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillMonitoring.Client", "..\BillMonitoring.Client\BillMonitoring.Client\BillMonitoring.Client.csproj", "{214D709E-FB71-4BA3-B9F6-7A3452EA31CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BillMonitoring.DTO", "BillMonitoring.DTO", "{9CF45E1B-B6EA-4831-8898-53DF439775AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillMonitoring.DTO", "..\BillMonitoring.DTO\BillMonitoring.DTO.csproj", "{20DD2315-EDE6-45FE-80AA-062EF14CEFE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA5C60AE-C8C0-4735-AED2-9B651EDADE23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA5C60AE-C8C0-4735-AED2-9B651EDADE23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA5C60AE-C8C0-4735-AED2-9B651EDADE23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA5C60AE-C8C0-4735-AED2-9B651EDADE23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{214D709E-FB71-4BA3-B9F6-7A3452EA31CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{214D709E-FB71-4BA3-B9F6-7A3452EA31CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{214D709E-FB71-4BA3-B9F6-7A3452EA31CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{214D709E-FB71-4BA3-B9F6-7A3452EA31CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20DD2315-EDE6-45FE-80AA-062EF14CEFE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20DD2315-EDE6-45FE-80AA-062EF14CEFE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20DD2315-EDE6-45FE-80AA-062EF14CEFE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20DD2315-EDE6-45FE-80AA-062EF14CEFE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{214D709E-FB71-4BA3-B9F6-7A3452EA31CF} = {AD34293E-CFF9-4262-BDCE-7C8B1B281D39}
+		{20DD2315-EDE6-45FE-80AA-062EF14CEFE6} = {9CF45E1B-B6EA-4831-8898-53DF439775AF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD881601-C81B-48F0-8C66-4C0AE5674883}
+	EndGlobalSection
+EndGlobal

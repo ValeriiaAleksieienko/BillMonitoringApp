@@ -1,0 +1,23 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+<h1>Login</h1>
+
+<div>
+    <form asp-action="Login" asp-controller="Account" asp-antiforgery="true">
+        <div>
+            <div>
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" />
+                <br />
+                <label asp-for="Password"></label>
+                <input type="password" asp-for="Password" />
+            </div>
+            <div>
+                <input type="submit" value="LogIn" />
+            </div>
+        </div>
+    </form>
+    @Html.Raw(TempData["message"])
+</div>

@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="BillMonitoring.Desktop.Views.PeriodView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BillMonitoring.Desktop.Views"
+             xmlns:ui="clr-namespace:BillMonitoring.Desktop"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="root">
+    <UserControl.Resources>
+        <ui:PeriodFullnesToColorBrushConverter x:Key="Converter" />
+    </UserControl.Resources>
+    <Grid>
+        <DockPanel>
+            <DockPanel Margin="10 5" LastChildFill="False" DockPanel.Dock="Top">
+                <TextBlock Text="From " DockPanel.Dock="Left"/>
+                <TextBlock Text="{Binding Path=Period.StartDate, StringFormat=MM/dd/yyyy}" DockPanel.Dock="Left"/>
+                <TextBlock Text=" to " DockPanel.Dock="Left"/>
+                <TextBlock Text="{Binding Path=Period.EndDate, StringFormat=MM/dd/yyyy}" DockPanel.Dock="Left"/>
+
+                <Button Click="Button_Click" DockPanel.Dock="Right" Background="Transparent" BorderBrush="Transparent">
+                    <Button.Content>
+                        <Image Source="/images/dots-circle-icon.png" Width="20"></Image>
+                    </Button.Content>
+                </Button>
+                <Popup x:Name="Menu" StaysOpen="False" Placement="Left">
+                    <StackPanel>
+                        <ListBox ItemsSource="{Binding Path=Commands}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <MenuItem Header="{Binding Key}" 
+                                              Command="{Binding Value}"
+                                              CommandParameter="{Binding ElementName=root, Path=DataContext}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Popup>
+
+            </DockPanel>
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" DockPanel.Dock="Top">
+                <TextBlock Text="{Binding Path=PeriodTotalAmount}" />
+                <TextBlock Text="/"/>
+                <TextBlock Text="{Binding Path=Period.ExpectedAmount}" />
+            </StackPanel>
+            <ProgressBar Foreground="{Binding Path=PeriodFullness, Converter={StaticResource Converter}}" DockPanel.Dock="Top"
+                            Margin="10 0 10 10" Height="10" Name="pbAmount" Minimum="0" 
+                            Maximum="{Binding Path=Period.ExpectedAmount, UpdateSourceTrigger=PropertyChanged}" 
+                            Value="{Binding Path=PeriodTotalAmount, UpdateSourceTrigger=PropertyChanged}"/>
+        </DockPanel>
+    </Grid>
+</UserControl>

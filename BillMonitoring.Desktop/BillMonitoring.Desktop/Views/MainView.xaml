@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="BillMonitoring.Desktop.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BillMonitoring.Desktop.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <Style x:Key="ListBoxItemStyle" >
+            <Setter Property="Control.Margin" Value="1"/>
+            <Setter Property="Control.BorderThickness" Value="1" />
+            <Setter Property="Control.BorderBrush" Value="Gray" />
+            <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+        <Style x:Key="TextBlockFont">
+            <Setter Property="Control.FontSize" Value="15"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding ElementName=Menu, Path=Height}"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="Menu" Grid.Row="0" Grid.ColumnSpan="2" >
+            <MenuItem Header="Add new period" Command="{Binding ToSetupViewCommand}" />
+            <MenuItem Header="Categories"  Command="{Binding ToCategoriesDataViewCommand}"/>
+            <MenuItem Header="All Data" Command="{Binding ToBillsViewCommand}"/>
+        </Menu>
+        <DockPanel Grid.Column="0" Grid.Row="1">
+            <Label DockPanel.Dock="Top">Current</Label>
+            <ListBox x:Name="ListCurrentPeriod" DockPanel.Dock="Top"
+                     SelectedItem="{Binding SelectedPeriod}" 
+                     SelectedIndex="{Binding SelectedIndex1}">
+                <ListBoxItem x:Name="Current" Selected="ListBoxItem_Selected"
+                             Visibility="{Binding IsCurrentSet, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                             Style="{StaticResource ListBoxItemStyle}">
+                    <ListBoxItem.Content>
+                        <local:PeriodView DataContext="{Binding CurrentPeriod}"/>
+                    </ListBoxItem.Content>
+                </ListBoxItem>
+            </ListBox>
+            <Label DockPanel.Dock="Top">Closed</Label>
+            <ListBox DockPanel.Dock="Top" ItemsSource="{Binding ClosedPeriods, UpdateSourceTrigger=PropertyChanged}"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                     SelectedItem="{Binding SelectedPeriod}"  SelectedIndex="{Binding SelectedIndex2}"
+                     Style="{StaticResource ListBoxItemStyle}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <local:PeriodView/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" Margin="5">
+            <Label FontSize="15">Period Info</Label>
+            <DockPanel>
+                <TextBlock Text="From " DockPanel.Dock="Left" Style="{StaticResource TextBlockFont}"/>
+                <TextBlock Text="{Binding SelectedPeriod.Period.StartDate, StringFormat=MM/dd/yyyy}" DockPanel.Dock="Left"
+                           Style="{StaticResource TextBlockFont}"/>
+                <TextBlock Text=" to " DockPanel.Dock="Left" Style="{StaticResource TextBlockFont}"/>
+                <TextBlock Text="{Binding SelectedPeriod.Period.EndDate, StringFormat=MM/dd/yyyy}" DockPanel.Dock="Left"
+                           Style="{StaticResource TextBlockFont}"/>
+            </DockPanel>
+            <ListBox ItemsSource="{Binding SelectedPeriodInfo}" Style="{StaticResource ListBoxItemStyle}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Path=Category.Name}" Grid.Column="0" Style="{StaticResource TextBlockFont}"/>
+                            <TextBlock Text="{Binding Path=Amount}" Grid.Column="1" Style="{StaticResource TextBlockFont}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BillMonitoring.DAL\BillMonitoring.DAL.csproj" />
+    <ProjectReference Include="..\BillMonitoring.Entities\BillMonitoring.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
